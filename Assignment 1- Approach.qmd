@@ -1,0 +1,28 @@
+---
+title: "Telco Customer Churn"
+Subtitle:"DATA 607 : Week 1 Assignment Examplar"
+Date: "9/5/2026"
+Author: "DW"
+Format:
+ html
+ code-fold:true
+ 
+ 
+editor: visual
+---
+
+## 
+
+## APPROACH
+
+In this assignment, I selected a telecommunications customer churn dataset that contains information about customer demographics, services, account information, and billing behavior. The dataset provides a useful opportunity to explore customer behavior and identify factors that may influence whether a customer stays with or leaves a telecommunications company.
+
+My plan for this assignment is to load the data into R, clean and prepare the dataset, and perform exploratory data analysis (EDA) to identify patterns and relationships between customer characteristics and churn.
+
+Data Source :
+
+<https://www.kaggle.com/datasets/yeanzc/telco-customer-churn-ibm-dataset?resource=download>
+
+## RESEARCH QUESTION 
+
+What factors are most strongly associated with customer churn in the telecommunications industry, and can customer churn be predicted using customer demographic, service, and account information?
