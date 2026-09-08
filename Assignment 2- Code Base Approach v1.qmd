@@ -1,0 +1,151 @@
+---
+title: "Telco Customer Churn"
+Subtitle:"DATA 607 : Week 1 Assignment Examplar"
+Date: "9/5/2026"
+Author: "Kingsley Kojo Kpoku"
+Format:
+ html
+ code-fold:true
+ 
+ 
+editor: visual
+---
+
+## 
+
+## 1.APPROACH
+
+In this assignment, I selected a telecommunications customer churn dataset that contains information about customer demographics, services, account information, and billing behavior. The dataset provides a useful opportunity to explore customer behavior and identify factors that may influence whether a customer stays with or leaves a telecommunications company.
+
+My plan for this assignment is to load the data into R, clean and prepare the dataset, and perform exploratory data analysis (EDA) to identify patterns and relationships between customer characteristics and churn.
+
+Data Source :
+
+<https://www.kaggle.com/datasets/yeanzc/telco-customer-churn-ibm-dataset?resource=download>
+
+## RESEARCH QUESTION
+
+What factors are most strongly associated with customer churn in the telecommunications industry, and can customer churn be predicted using customer demographic, service, and account information?
+
+## 2.CODE BASE
+
+Under the Codebase section, I will import packages such as `tidyverse` to support data manipulation, analysis, and visualization. These tools will help me clean and explore the Telco dataset, identify meaningful patterns and relationships, and develop a better understanding of the factors associated with customer churn.
+
+## #IMPORT TIDYVERSE PACKAGE
+
+```{r}
+
+
+library(tidyverse)
+
+```
+
+## #IMPORT DATASET
+
+```{r}
+    
+
+dat <- read.csv("Telco Data - Approach.csv")
+
+names(dat)
+
+```
+
+## #DATA MANIPULATION
+
+```{r}
+
+dim(dat); head(dat)
+
+summary(dat); 
+
+sum(is.na(dat))
+
+
+```
+
+Comment: from the above you can see that the dataframe has 7043 rows and 33 columns
+
+```{r}
+
+datis_churn <- factor(
+  dat$Churn,
+  levels = c("No", "Yes"),
+  labels = c("Stayed", "Churned")
+)
+
+# Display the first six rows
+print(head(dat))
+```
+
+Comment : Here is created a new column called ISCHURN and renamed the categories "NO" to stayed (meaning the customer did not leave the telco) and "YES" to Churned (meaning the customer left the telco due to various reason i will further analysis).
+
+## #DATA VISUALISATION
+
+```{r}
+
+library(tidyverse)
+
+head(dat)
+
+names(dat)
+
+
+##GENDER VS TOTAL CHARGES
+
+head(dat)
+
+ggplot(dat, aes(x = Gender, y = Total.Charges)) +
+  stat_summary(fun = sum, geom = "bar", fill = "blue") +
+  labs(
+    title = "Total Charges by Gender",
+    x = "Gender",
+    y = "Total Charges"
+  ) +
+  theme_minimal()
+
+## Comment ; The analysis shows that male customers accounted for 50.47% of the total charges, while female customers accounted for 49.53%. This indicates a nearly equal contribution to total charges between male and female customers, with male customers contributing slightly more
+
+## PAYMENT METHOD VS TOTAL CHARGES
+
+head(dat)
+
+ggplot(dat, aes(x = Payment.Method, y = Total.Charges)) +
+  stat_summary(fun = sum, geom = "bar", fill = "red") +
+  labs(
+    title = "Payment.Method by Gender",
+    x = "Payment Method",
+    y = "Total Charges"
+  ) +
+  theme_minimal()
+
+##Comment : Electronic check customers contributed the highest share of total charges (30.80%), followed by automatic bank transfers (29.57%), credit cards (29.10%), and mailed checks (10.53%)
+
+## CHURN LABEL VS GENDER 
+
+
+head(dat)
+
+ggplot(dat, aes(x = Churn.Label, y = Total.Charges)) +
+  stat_summary(fun = sum, geom = "bar", fill = "Green") +
+  labs(
+    title = "Churn label by total charges",
+    x = "Churn.Label",
+    y = "Total Charges"
+  ) +
+  theme_minimal()
+
+## Comment : The analysis shows that 73.46% of customers remained with the telecommunications company, while 26.54% of customers churned. This indicates that approximately one in four customers left the company, highlighting a significant level of customer churn that warrants further investigation
+```
+
+## #THOUGHTS
+
+The analysis shows that male customers contributed **50.47%** of total charges, compared with **49.53%** for female customers, indicating a nearly equal contribution.
+
+For payment methods, electronic check customers contributed the highest share at **30.80%**, followed by automatic bank transfers at **29.57%** and credit cards at **29.10%**. Mailed checks contributed **10.53%**.
+
+The churn analysis shows that **73.46%** of customers stayed, while **26.54%** churned. This means approximately **1 in 4 customers left**, highlighting the importance of further investigating the factors associated with churn.
+
+## #AI USE
+
+ChatGPT was used as a supporting tool to assist with data analysis, R coding, and visualization development. All AI-generated code and analytical suggestions were reviewed, tested, and monitored by me to ensure that the final analysis was accurate and aligned with the project objectives.
